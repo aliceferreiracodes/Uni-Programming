@@ -1,6 +1,7 @@
-package estoque;
+package ex1;
 
 public class Produto {
+
 	String nome;
 	double preco;
 	int estoque;
