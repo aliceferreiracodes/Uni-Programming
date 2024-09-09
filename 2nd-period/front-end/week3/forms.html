@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+</head>
+<body>
+    <fieldset>
+        <legend>Formulário</legend>
+        <form action="" method="post">
+            <p><input type="text" id="nm" size="20" placeholder="Digite seu nome"></p>
+            <p><input type="password" id="senha" size="20" placeholder="Digite sua senha"></p>
+            <p><input type="submit" value="Enviar">
+            <input type="reset" value="Limpar"></p>
+
+            <p>Qual a cor e tamanho da camiseta?</p>
+
+            <label>Cor:</label> <br />
+            <input type="radio" name="cor" value="azul" />
+                Azul <br />
+            <input type="radio" name="cor" value="branca" />
+                Branca <br />
+
+            <label>Tamanho:</label> <br />
+            <input type="radio" name="tamanho" value="pequena" />
+                P <br />
+            <input type="radio" name="tamanho" value="media" />
+                M <br />
+            <input type="radio" name="tamanho" value="grande" />
+                G <br />
+
+            <p>Preferência musical</p>
+            <p><select multiple name="musical" size="4">
+                <option value="metal/rock">Metal/Rock</option>
+                <option value="hiphop">Hip Hop</option>
+                <option value="jazz">Jazz</option>
+                <option value="country">Country</option>
+                <option value="sertaneja">Sertaneja</option>
+            </select></p>
+
+            <p>Preferência de filmes</p>
+            <select name="filme">
+                <option value="acao">Ação</option>
+                <option value="terror">Terror</option>
+                <option value="romance">Romance</option>
+                <option value="comedia">Comédia</option>
+                <option value="ficcao">Ficção</option>
+            </select> <br>
+
+            <p><textarea name="texto" id="txt" cols="30" rows="10" placeholder="Digite um texto"></textarea></p>
+        </form>
+    </fieldset>
+    
+
+</body>
+</html>
