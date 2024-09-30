@@ -158,9 +158,9 @@ int menu()
     int opcao; 
 
     // Apresentação do sistema e instruções de uso
-    printf("\n\n  - MERCADO SUPERBODEGA -  \n");
+    printf("\n\n  - MERCADO HYRULE -  \n");
 
-    printf("\n-> Seja bem-vindo(a) ao sistema de compras do mercado SuperBodega! Aqui voce possui tres principais funcionalidades: \n");
+    printf("\n-> Seja bem-vindo(a) ao sistema de compras do mercado Hyrule! Aqui voce possui tres principais funcionalidades: \n");
     printf("a lista de produtos cadastrados, a lista de desejos e o carrinho de compras. Veja as acoes que voce pode operar no sistema:\n");
     
     printf("\n- Lista de Produtos Cadastrados\n");
