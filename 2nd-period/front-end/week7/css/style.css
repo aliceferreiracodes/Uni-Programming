@@ -1,0 +1,19 @@
+@charset "UTF-8";
+*{
+    font-family: trebuchet ms, sans-serif;
+}
+h3:focus {
+    background-color: rgb(108, 126, 137);
+}
+p:focus {
+    outline: 2px dotted rgb(108, 126, 137);
+}
+li:nth-child(1):focus {
+    color: rgb(28, 127, 96)
+}
+li:nth-child(2):focus {
+    font-size: 20px;
+}
+li:nth-child(3):focus {
+    text-decoration: underline;
+}
