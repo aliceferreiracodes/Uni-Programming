@@ -4,7 +4,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-typedef struct // Struct Produto
+typedef struct // Product struct
 {
     int codigo; 
     char nome[30]; 
@@ -12,55 +12,55 @@ typedef struct // Struct Produto
 
 } Produto;
 
-typedef struct // Struct Carrinho
+typedef struct // Shopping cart struct
 { 
     Produto produto; 
     int quantidade; 
     
 } Carrinho;
 
-// Variáveis globais
-int itens_cadastrados = 0; // itens_cadastrados: armazena o atual número de intens na lista de produtos cadastrados
-int itens_ld = 0; // itens_ld: armazena o atual número de intens na lista de desejos
-int itens_carrinho = 0; // itens_carrinho: armazena o atual número de intens no carrinho
+// Global variables
+int itens_cadastrados = 0; // itens_cadastrados: stores the current number of items in the registered product list
+int itens_ld = 0; // itens_ld: stores the current number of items in the wishlist
+int itens_carrinho = 0; // itens_carrinho: stores the current number of items in the shopping cart
 
 
-// Declaração das funções
-int menu(); // Exibe o menu do programa
+// Description of the functions
+int menu(); // Displays the menu
 
-Produto cadastrar_produto(int tam_lista); // Cadastra produto na lista de itens do mercado
+Produto cadastrar_produto(int tam_lista); // Registers the product in the market's product list
 
-void listar_produtos(Produto *lista, int inicio, int fim); // Exibe informações de produtos em determinado intervalo da lista
+void listar_produtos(Produto *lista, int inicio, int fim); // Displays information about products in a given range
 
-void pegar_produto_por_codigo(Produto *lista, int tam_lista); // Busca por produto na lista de cadastrados
+void pegar_produto_por_codigo(Produto *lista, int tam_lista); // Searches for products in the registered product list
 
-void remover_produto(Produto *lista, int tam_lista); // Remove produto informado por código
+void remover_produto(Produto *lista, int tam_lista); // Removes product by its code
 
-void add_lista_de_desejos(Produto *cadastrados, Produto *lista_desejos, int n_cadastrados, int n_lista_desejos); // Adiciona item à lista de desejos
+void add_lista_de_desejos(Produto *cadastrados, Produto *lista_desejos, int n_cadastrados, int n_lista_desejos); // Adds product to the wishlist
  
-void buscar_ld(Produto *lista, int tam_lista); // Busca por produto na lista de desejos
+void buscar_ld(Produto *lista, int tam_lista); // Searches for product in the wishlist
 
-void remover_ld(Produto *lista, int tam_lista); // Remove produto da lista de desejos
+void remover_ld(Produto *lista, int tam_lista); // Removes product from the wishlist
 
-void comprar_produto(Produto *cadastrados, Carrinho *lista_carrinho, int n_cadastrados, int n_carrinho); // Adiciona produto ao carrinho
+void comprar_produto(Produto *cadastrados, Carrinho *lista_carrinho, int n_cadastrados, int n_carrinho); // Adds product to the shopping cart
 
-void visualizar_carrinho(Carrinho *lista, int inicio, int fim); // Exibe itens do carrinho
+void visualizar_carrinho(Carrinho *lista, int inicio, int fim); // Displays shopping cart
 
-void remover_carrinho(Carrinho *lista, int tam_carrinho); // Remove um item do carrinho
+void remover_carrinho(Carrinho *lista, int tam_carrinho); // Removes an item from the shopping cart
 
-void tem_no_carrinho(Carrinho *lista, int tam_carrinho); // Busca item no carrinho
+void tem_no_carrinho(Carrinho *lista, int tam_carrinho); // Searches for item in the shopping cart
 
-void fechar_pedido(Carrinho *lista, int tam_carrinho); // Fecha o pedido e calcula o valor total da compra
+void fechar_pedido(Carrinho *lista, int tam_carrinho); // Finishes order and calculates final price
 
 
-// Função principal
+// Main function
 int main()
 {
-    // Criação de lista de produtos, carrinho e a funcionalidade extra lista de desejos
+    // Creating product list, shopping cart and wishlist
     Produto produtos[50];
     Carrinho carrinho[50];
     Produto lista_de_desejos[50];
-    int opcao;  // Variável opcao: para escolher ação
+    int opcao;  // Variable that stores user's option
     
 
     while(1)
@@ -73,75 +73,75 @@ int main()
         switch (opcao)
         {
             case 1:
-            // Cadastrar produto
+            // Register product
                 produtos[itens_cadastrados] = cadastrar_produto(itens_cadastrados);
                 break;
 
             case 2:
-            // Listar produtos da lista de cadastrados
-                printf("\n-> Lista de produtos cadastrados:\n");
+            // List registered products
+                printf("\n-> Registered products:\n");
                 listar_produtos(produtos, 0, itens_cadastrados);
                 break;
 
             case 3:
-            // Buscar produto na lista de cadastrados
+            // Search for products in the registered product list
                 pegar_produto_por_codigo(produtos, itens_cadastrados);
                 break;
 
             case 4:
-            // Remover produto da lista de cadastrados
+            // Remove product in the registered product list
                 remover_produto(produtos, itens_cadastrados);
                 break;
 
             case 5:
-            // Adicionar na lista de desejos
+            // Add to wishlist
                 add_lista_de_desejos(produtos, lista_de_desejos, itens_cadastrados, itens_ld);
                 break;
 
             case 6:
-            // Ver lista de desejos
-                printf("\n-> Lista de desejos:\n");
+            // Display wishlist
+                printf("\n-> Wishlist:\n");
                 listar_produtos(lista_de_desejos, 0, itens_ld);
                 break;
 
             case 7:
-            // Buscar na lista de desejos
+            // Search wishlist
                 buscar_ld(lista_de_desejos, itens_ld);
                 break;
 
             case 8:
-            // Remover da lista de desejos
+            // Remove from wishlist
                 remover_ld(lista_de_desejos, itens_ld);
                 break;
 
             case 9:
-            // Adicionar no carrinho de compras
+            // Add to shopping cart
                 comprar_produto(produtos, carrinho, itens_cadastrados, itens_carrinho);
                 break;
 
             case 10:
-            // Ver carrinho de compras
-                printf("\n-> Lista de produtos do carrinho:\n");
+            // Display shopping cart
+                printf("\n-> Shopping cart:\n");
                 visualizar_carrinho(carrinho, 0, itens_carrinho);
                 break;
 
             case 11:
-            // Buscar no carrinho de compras
+            // Search shopping cart
                 tem_no_carrinho(carrinho, itens_carrinho);
                 break;
 
             case 12:
-            // Remover do carrinho de compras
+            // Remove from shopping cart
                 remover_carrinho(carrinho, itens_carrinho);
                 break;
 
             case 13:
-            // Fechar compra
+            // Finish order
                 fechar_pedido(carrinho, itens_carrinho);
                 break;
 
             case 14:
-                printf("\n->Foi um prazer ajudar! Volte sempre!\n\n");
+                printf("\n->It was a pleasure to help! Come back soon!\n\n");
                 break;
 
             default:
@@ -157,41 +157,41 @@ int menu()
 {
     int opcao; 
 
-    // Apresentação do sistema e instruções de uso
-    printf("\n\n  - MERCADO HYRULE -  \n");
+    // System presentation and instructions
+    printf("\n\n  - HYRULE MARKET -  \n");
 
-    printf("\n-> Seja bem-vindo(a) ao sistema de compras do mercado Hyrule! Aqui voce possui tres principais funcionalidades: \n");
-    printf("a lista de produtos cadastrados, a lista de desejos e o carrinho de compras. Veja as acoes que voce pode operar no sistema:\n");
+    printf("\n-> Welcome to Hyrule Market's shopping system! Here, you have 3 main features: \n");
+    printf("the registered products list, the wishlist and the shopping cart. These are the actions you can perform in the system:\n");
     
-    printf("\n- Lista de Produtos Cadastrados\n");
-    printf("1 - Cadastrar um produto\n");
-    printf("2 - Visualizar a lista de produtos cadastrados\n");
-    printf("3 - Buscar um produto por codigo e exibir suas informacoes\n");
-    printf("4 - Remover produto da lista de produtos cadastrados\n");
+    printf("\n- Registered Product List\n");
+    printf("1 - Register a product\n");
+    printf("2 - View the list of registered products\n");
+    printf("3 - Search for a product by code and display its information\n");
+    printf("4 - Remove a product from the registered product list\n");
 
-    printf("\n- Lista de Desejos\n");
-    printf("5 - Adicionar um produto a sua lista de desejos\n");
-    printf("6 - Visualizar sua lista de desejos\n");
-    printf("7 - Buscar um produto por codigo na sua lista de desejos e exibir suas informacoes\n");
-    printf("8 - Remover produto da lista de desejos\n");
+    printf("\n- Wishlist\n");
+    printf("5 - Add a product to your wishlist\n");
+    printf("6 - View your wishlist\n");
+    printf("7 - Search for a product by code in your wishlist and display its information\n");
+    printf("8 - Remove a product from the wishlist\n");
 
-    printf("\n- Carrinho de Compras\n");
-    printf("9 - Adicionar um produto ao carrinho\n");
-    printf("10 - Visualizar o carrinho\n");
-    printf("11 - Buscar um produto por codigo no carrinho e exibir suas informacoes\n");
-    printf("12 - Remover produto do carrinho\n");
-    printf("13 - Fechar o pedido e finalizar sua compra\n");
+    printf("\n- Shopping Cart\n");
+    printf("9 - Add a product to the cart\n");
+    printf("10 - View the cart\n");
+    printf("11 - Search for a product by code in the cart and display its information\n");
+    printf("12 - Remove a product from the cart\n");
+    printf("13 - Complete the order and finalize your purchase\n");
 
-    printf("\n14 - Finalizar sistema\n");
+    printf("\n14 - Exit the system\n");
 
-    // Recebimento de input do usuário para escolher a ação que deseja
-    printf("\n-> Digite o numero da acao que deseja fazer: ");
+    // Option input
+    printf("\n-> Enter the number of the action you want to perform: ");
     scanf("%i", &opcao);
     getchar();
 
-    while (opcao > 14 || opcao < 1) // Tratamento de input inválido
+    while (opcao > 14 || opcao < 1) // Invalid input treatment
     {
-        printf("-> Essa e uma opcao invalida. Por favor, insira uma opcao valida: ");
+        printf("-> This option is invalid. Please, insert a valid option: ");
         scanf("%i", &opcao);
         getchar();
     }
@@ -204,23 +204,23 @@ Produto cadastrar_produto(int tam_lista)
 {
     Produto novo_produto;
 
-    // Validação do nome
+    // Name validation
     bool nome_valido = false;
 
     while (nome_valido == false)
     {
-        printf("-> Insira o nome do produto que deseja cadastrar: "); // Inserir nome
+        printf("-> Insert the name of the product you want to register: "); // Insert name
         if (fgets(novo_produto.nome, 30, stdin))
         {
-            novo_produto.nome[strcspn(novo_produto.nome, "\n")] = 0; // Remover caractere de nova linha
+            novo_produto.nome[strcspn(novo_produto.nome, "\n")] = 0; // Remove new line
             nome_valido = true; 
 
-            for (int i = 0; i < strlen(novo_produto.nome); i++) // Itera por todo o nome
+            for (int i = 0; i < strlen(novo_produto.nome); i++) // Iterate through name
             { 
-                // Se um caractere não é espaço nem letra, o nome é inválido
+                // Invalid name treatment
                 if (isalpha(novo_produto.nome[i]) == 0 && novo_produto.nome[i] != ' ') 
                 {
-                    printf("-> Esse nome e invalido. Digite um nome que contenha apenas letras.\n"); 
+                    printf("-> This name is invalid. Type a name that contains letters only.\n"); 
                     nome_valido = false; 
                     break;
                 }           
@@ -228,42 +228,40 @@ Produto cadastrar_produto(int tam_lista)
         }
         else
         {
-            printf("-> Erro ao ler nome.\n");
+            printf("-> Name input error.\n");
             exit(1);
         }  
     }
 
-
-    // Validação do preço
     char input_preco[20];
     char *ptr;
     bool preco_valido = false;
 
     while (preco_valido == false)
     {
-        printf("-> Insira o preco do produto: "); // Inserir preço
+        printf("-> Insert the price of the product: "); // Insert price
         if(fgets(input_preco, 20, stdin))
         {
-            input_preco[strcspn(input_preco, "\n")] = 0; // Remover caractere de nova linha
+            input_preco[strcspn(input_preco, "\n")] = 0; // Remove new line
             preco_valido = true;
 
-            novo_produto.preco = strtod(input_preco, &ptr); // Transformar input de string para double
+            novo_produto.preco = strtod(input_preco, &ptr); // Convert int to double
 
-            if (*ptr != '\0') // Verificar se preco e valido
+            if (*ptr != '\0') // Price validadion
             {
-                printf("-> Esse preco e invalido. Insira um numero.\n");
+                printf("-> This price is invalid. Insert a number.\n");
                 preco_valido = false;
             }
                 
         }
         else
         {
-            printf("Erro ao ler preco.\n");
+            printf("Price input error.\n");
             exit(1);
         }
     }
 
-    novo_produto.codigo = tam_lista + 1; // Determinação do código
+    novo_produto.codigo = tam_lista + 1; // Assign product's code
     itens_cadastrados++;
 
     return novo_produto;
@@ -274,9 +272,9 @@ void listar_produtos(Produto *lista, int inicio, int fim)
 {
     for (int i = inicio; i < fim; i++)
     {
-        printf("\nCodigo: %i\n", lista[i].codigo);
-        printf("Nome: %s\n", lista[i].nome);
-        printf("Preco: R$%.2f\n", lista[i].preco);
+        printf("\nCode: %i\n", lista[i].codigo);
+        printf("Name: %s\n", lista[i].nome);
+        printf("Price: $%.2f\n", lista[i].preco);
     }
 }
 
@@ -284,17 +282,17 @@ void listar_produtos(Produto *lista, int inicio, int fim)
 void pegar_produto_por_codigo(Produto *lista, int tam_lista)
 {
     int codigo;
-    printf("\n-> Qual e o codigo do produto que deseja buscar nos produtos cadastrados? "); // Inserir código para busca
+    printf("\n-> Insert the code of the product you want to search in the registered product list: "); // Code input
     scanf("%i", &codigo);
     getchar();
 
-    // Verificar se há esse código na lista
+    // Verify if code is in the list
     if (codigo < 1 || codigo > tam_lista)
-        printf("-> Desculpe, nao foi encontrado nenhum produto com esse codigo na lista de itens cadastrados.\n");
+        printf("-> Sorry! We couldn't find any product with this code in our registered product list.\n");
     else 
     {
-        // Se sim, chamar função listar_produtos para listar o produto desejado
-        printf("-> O produto que voce busca foi encontrado:\n");
+        // If so, list product
+        printf("-> The product was found:\n");
         listar_produtos(lista, codigo - 1, codigo); 
     }
 }
@@ -302,18 +300,18 @@ void pegar_produto_por_codigo(Produto *lista, int tam_lista)
 
 void remover_produto(Produto *lista, int tam_lista)
 {
-    // Inserir código
+    // Code input
     int codigo;
-    printf("\n-> Qual e o codigo do produto que deseja remover da lista de itens cadastrados? "); 
+    printf("\n-> Insert the code of the product you want to remove from the registered product list: "); 
     scanf("%i", &codigo);
     getchar();
 
-    // Verificar se há esse código na lista
+    // Verify if code is in the list
     if (codigo < 1 || codigo > tam_lista)
-        printf("-> Desculpe, nao foi encontrado nenhum produto com esse codigo na lista de itens cadastrados.\n");
+        printf("-> Sorry! We couldn't find any product with this code in our registered product list.\n");
     else 
     {
-        // Se sim, executar loop de remoção
+        // If so, start remotion loop
         for (int i = codigo - 1; i < tam_lista; i++)
         {
             lista[i] = lista[i + 1];
@@ -322,36 +320,36 @@ void remover_produto(Produto *lista, int tam_lista)
 
         itens_cadastrados--;
 
-        printf("-> Produto removido com sucesso!\n");
+        printf("-> Product removed successfully!\n");
     }
 }
 
 
 void add_lista_de_desejos(Produto *cadastrados, Produto *lista_desejos, int n_cadastrados, int n_lista_desejos)
 {
-    // Inserir código
+    // Code input
     int codigo;
-    printf("\n-> Qual e o codigo do produto que deseja adicionar na lista de desejos? "); 
+    printf("\n-> Insert the code of the product you want to add to your wishlist: "); 
     scanf("%i", &codigo);
     getchar();
 
-    // Verificar se há esse código na lista
+    // Verify if code is in the list
     if (codigo < 1 || codigo > n_cadastrados)
-        printf("-> Desculpe, nao foi encontrado nenhum produto com esse codigo na lista de cadastrados.\n");
+        printf("-> Sorry! We couldn't find any product with this code in our registered product list.\n");
     else 
     {
-        for (int i = 0; i < n_lista_desejos; i++) // Checar se o produto ja foi adicionado
+        for (int i = 0; i < n_lista_desejos; i++) // Verify if product has already been added
         {
             if (codigo == lista_desejos[i].codigo)
             {
-                printf("\n-> Esse produto ja foi adicionado a sua lista de desejos.\n");
+                printf("\n-> This product has already been added to your wishlist.\n");
                 return;
             }
         }
 
         lista_desejos[n_lista_desejos] = cadastrados[codigo - 1];
         itens_ld++;
-        printf("Produto adicionado com sucesso a lista de desejos!\n");
+        printf("Product added successfully!\n");
     }
 }
 
@@ -360,15 +358,15 @@ void buscar_ld(Produto *lista, int tam_lista)
 {
     bool achou_produto = false;
     int codigo;
-    printf("\n-> Qual e o codigo do produto que deseja buscar na sua lista de desejos? "); // Inserir código para busca
+    printf("\n-> Insert the code of the product you want to search in your wishlist: "); // Code input
     scanf("%i", &codigo);
     getchar();
 
     for (int i = 0; i < tam_lista; i++)
     {
-        if (codigo == lista[i].codigo) // Ao achar, chamar função visualizar_carrinho com início no índice do item e fim no índice seguinte
+        if (codigo == lista[i].codigo) // Display product
         {
-            printf("\n-> O produto que voce busca foi encontrado:\n");
+            printf("\n-> The product was found:\n");
             achou_produto = true;
             listar_produtos(lista, i, i + 1);
 
@@ -376,9 +374,9 @@ void buscar_ld(Produto *lista, int tam_lista)
         }
     }
 
-    // Se o produto não for encontrado, printar mensagem de erro
+    // Print error message if code is not found
     if (achou_produto == false)
-        printf("-> Desculpe, nao foi encontrado nenhum produto com esse codigo na sua lista de desejos.\n");
+        printf("-> Sorry! We couldn't find any product with this code in your wishlist.\n");
 }
 
 
@@ -387,16 +385,16 @@ void remover_ld(Produto *lista, int tam_lista)
     bool achou_produto = false;
     int indice_produto;
 
-    // Inserir código
+    // Code input
     int codigo;
-    printf("\n-> Qual e o codigo do produto que deseja remover da sua lista de desejos? "); 
+    printf("\n-> Insert the code of the product you want to remove from your wishlist: "); 
     scanf("%i", &codigo);
     getchar();
 
-    // Verificar se há esse produto na lista
+    // Verify if code is in the list
     for (int i = 0; i < tam_lista; i++)
     {
-        if (codigo == lista[i].codigo) // Ao encontrar, remover produto
+        if (codigo == lista[i].codigo) // Remove product
         {
             achou_produto = true;
             indice_produto = i;
@@ -408,14 +406,14 @@ void remover_ld(Produto *lista, int tam_lista)
 
             itens_ld--;
             
-            printf("-> Produto removido com sucesso!\n");
+            printf("-> Product removed successfully!\n");
             break;
         }
     }
 
-    // Se o produto não for encontrado, printar mensagem de erro
+    // Print error message if code is not found
     if (achou_produto == false)
-        printf("-> Desculpe, nao foi encontrado nenhum produto com esse codigo na sua lista de desejos.\n");
+        printf("-> Sorry! We couldn't find any product with this code in your wishlist.\n");
 }
 
 
@@ -424,18 +422,18 @@ void comprar_produto(Produto *cadastrados, Carrinho *lista_carrinho, int n_cadas
     Carrinho novo_item;
     bool produto_repetido = false;
 
-    // Inserir código
+    // Code input
     int codigo;
-    printf("\n-> Qual e o codigo do produto que deseja adicionar ao carrinho? "); 
+    printf("\n-> Insert the code of the product you want to add to your cart: "); 
     scanf("%i", &codigo);
     getchar();
 
-    // Verificar se há esse código na lista
+    // Verify if code is in the list
     if (codigo < 1 || codigo > n_cadastrados)
-        printf("-> Desculpe, nao foi encontrado nenhum produto com esse codigo na lista de itens cadastrados.\n");
+        printf("-> Sorry! We couldn't find any product with this code in our registered product list.\n");
     else 
     {
-        // Se sim, iterar por todos os produtos do carrinho para ver se o produto é repetido, aumentar a quandidade se for o caso
+        // Increase quantity if product is repeated
         for (int i = 0; i < n_carrinho; i++)
         {
             if (lista_carrinho[i].produto.codigo == codigo)
@@ -445,14 +443,14 @@ void comprar_produto(Produto *cadastrados, Carrinho *lista_carrinho, int n_cadas
             }
         }
 
-        if (produto_repetido == false) // Se o produto não for repetido, adicioná-lo pela primeira vez
+        if (produto_repetido == false) // In case it's not repeated, add it for the first time
         {
             lista_carrinho[n_carrinho].produto = cadastrados[codigo - 1];
             lista_carrinho[n_carrinho].quantidade = 1;
             itens_carrinho++;
         }
         
-        printf("Produto adicionado ao carrinho com sucesso!\n");
+        printf("Product added successfully!\n");
     }
 }
 
@@ -461,10 +459,10 @@ void visualizar_carrinho(Carrinho *lista, int inicio, int fim)
 {
     for (int i = inicio; i < fim; i++)
     {
-        printf("\nProduto: %s\n", lista[i].produto.nome);
-        printf("Quantidade: %i\n", lista[i].quantidade);
-        printf("Codigo: %i\n", lista[i].produto.codigo);
-        printf("Preco: %.2f\n", lista[i].produto.preco);
+        printf("\nProduct: %s\n", lista[i].produto.nome);
+        printf("Quantity: %i\n", lista[i].quantidade);
+        printf("Code: %i\n", lista[i].produto.codigo);
+        printf("Price: $%.2f\n", lista[i].produto.preco);
     }
 }
 
@@ -475,13 +473,13 @@ void remover_carrinho(Carrinho *lista, int tam_carrinho)
     bool produto_repetido = false;
     int indice_produto;
 
-    // Inserir código
+    // Code input
     int codigo;
-    printf("\n-> Qual e o codigo do produto que deseja remover do carrinho? "); 
+    printf("\n-> Insert the code of the product you want to remove from your cart: "); 
     scanf("%i", &codigo);
     getchar();
 
-    // Verificar se há esse produto na lista
+    // Verify if code is in the list
     for (int i = 0; i < tam_carrinho; i++)
     {
         if (codigo == lista[i].produto.codigo)
@@ -489,13 +487,13 @@ void remover_carrinho(Carrinho *lista, int tam_carrinho)
             indice_produto = i;
             achou_produto = true;
 
-            // Ao encontrar o produto, checar se ele é repetido, diminuir a quantidade em 1 se for o caso
+            // Decrease quantity if product is repeated
             if (lista[i].quantidade > 1)
             {
                 produto_repetido = true;
                 lista[i].quantidade--;
             }
-            else // Se não for repetido, remover por completo
+            else // Remove product if it's not repeated
             {
                 for (int j = indice_produto; j < tam_carrinho; j++)
                 {
@@ -505,14 +503,14 @@ void remover_carrinho(Carrinho *lista, int tam_carrinho)
                 itens_carrinho--;
             }
             
-            printf("-> Produto removido com sucesso!\n");
+            printf("-> Product removed successfully!\n");
             break;
         }
     }
 
-    // Se o produto não for encontrado, printar mensagem de erro
+    // Print error message if product is not found
     if (achou_produto == false)
-        printf("-> Desculpe, nao foi encontrado nenhum produto com esse codigo.\n");
+        printf("-> Sorry! We couldn't find any product with this code.\n");
 }
 
 
@@ -521,16 +519,16 @@ void tem_no_carrinho(Carrinho *lista, int tam_carrinho)
     bool achou_produto = false; 
 
     int codigo;
-    printf("\n-> Qual e o codigo do produto que deseja buscar no seu carrinho? "); // Inserir código para busca
+    printf("\n-> Insert the code of the product you want to search in your cart: "); // Code input
     scanf("%i", &codigo);
     getchar();
 
-    // Verificar se há esse produto na lista
+    // Verify if code is in the list
     for (int i = 0; i < tam_carrinho; i++)
     {
-        if (codigo == lista[i].produto.codigo) // Ao achar, chamar função visualizar_carrinho com início no índice do item e fim no índice seguinte
+        if (codigo == lista[i].produto.codigo) // Display product
         {
-            printf("\n-> O produto que voce busca foi encontrado:\n");
+            printf("\n-> The product was found: \n");
             achou_produto = true;
             visualizar_carrinho(lista, i, i + 1);
 
@@ -538,9 +536,9 @@ void tem_no_carrinho(Carrinho *lista, int tam_carrinho)
         }
     }
 
-    // Se o produto não for encontrado, printar mensagem de erro
+    // Print error message if product is not found
     if (achou_produto == false)
-        printf("-> Desculpe, nao foi encontrado nenhum produto com esse codigo no seu carrinho.\n");
+        printf("-> Sorry! We couldn't find any product with this code in your cart.\n");
 }
 
 
@@ -549,28 +547,28 @@ void fechar_pedido(Carrinho *lista, int tam_carrinho)
     float valor_total;
     char opt;
     
-    printf("\n-> Esses sao os produtos incluidos no seu pedido:\n"); // Printar itens do carrinho
+    printf("\n-> These are the products included in your order:\n"); // Display shopping cart
     visualizar_carrinho(lista, 0, tam_carrinho);
 
-    for (int i = 0; i < tam_carrinho; i++) // Calcular valor total
-        valor_total += lista[i].produto.preco;
+    for (int i = 0; i < tam_carrinho; i++) // Calculate total price
+        valor_total += lista[i].produto.preco * lista[i].quantidade;
 
-    printf("\n-> Preco total: %.2f\n", valor_total); // Printar valor total
+    printf("\n-> Total price: $%.2f\n", valor_total); // Print total price
 
-    printf("\n-> Fechar pedido? (\"s\" para sim e \"n\" para nao): "); // Confirmar fechamento do pedido
+    printf("\n-> Finish order? (\"y\" for yes e \"n\" for no): "); // Confirm order
     scanf("%c", &opt);
     tolower(opt);
 
-    // Checar resposta
-    if (opt == 's')
+    // Check answer
+    if (opt == 'y')
     {
         itens_carrinho = 0;
-        printf("\n-> Obrigada pela preferencia! Volte Sempre!\n");
+        printf("\n-> Thank you for your order! Come back soon!\n");
     }
     else if (opt == 'n')
     {
-        printf("\n-> Tudo bem!\n");
+        printf("\n-> Alright!\n");
     }
     else    
-        printf("\n-> Opcao invalida.\n");
+        printf("\n-> Invalid option.\n");
 }
