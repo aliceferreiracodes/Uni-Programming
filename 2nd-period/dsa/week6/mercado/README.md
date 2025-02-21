@@ -1,98 +1,98 @@
 # mercado.c
 
-mercado.c é um programa escrito em C que simula um sistema de mercado simples.
+mercado.c is a program written in C that simulates a simple market system.
 
 
-## 🛠️ Funcionalidades
+## 🛠️ Features
 
-As principais funcionalidades do sistema de mercado são:
+The main features of the market system are:
 
-- Lista de itens cadastrados
-- Lista de desejos
-- Carrinho de compras
+- List of registered items
+- Wishlist
+- Shopping cart
 
-Em todas elas é possível realizar operações de adição, busca e remoção de produtos, além de exibir a lista inteira.
+In all of them, you can perform operations such as adding, searching, and removing products, as well as displaying the entire list.
 
 
-## 👩‍💻 Desenvolvimento
+## 👩‍💻 Development
 
-O sistema de mercado foi desenvolvido com as funcionalidades mencionadas acima, e para tal, foram criadas as seguintes funções:
+The market system was developed with the functionalities mentioned above, and for that, the following functions were created:
 
-`cadastrar_produto()` -  Cadastra produto na lista de itens do mercado
+`cadastrar_produto()` - Registers a product in the market's item list
 
-`listar_produtos()` - Exibe informações de produtos em determinado intervalo da lista
+`listar_produtos()` - Displays product information within a specific range of the list
 
-`pegar_produto_por_codigo()` - Busca por produto na lista de cadastrados
+`pegar_produto_por_codigo()` - Searches for a product in the registered list
 
-`remover_produto()` - Remove produto informado por código
+`remover_produto()` - Removes a product by its code
 
-`add_lista_de_desejos()` - Adiciona item à lista de desejos
- 
-`buscar_ld()` - Busca por produto na lista de desejos
+`add_lista_de_desejos()` - Adds an item to the wishlist
 
-`remover_ld()` - Remove produto da lista de desejos
+`buscar_ld()` - Searches for a product in the wishlist
 
-`comprar_produto()` - Adiciona produto ao carrinho
+`remover_ld()` - Removes a product from the wishlist
 
-`visualizar_carrinho()` - Exibe itens do carrinho
+`comprar_produto()` - Adds a product to the shopping cart
 
-`remover_carrinho()` - Remove um item do carrinho
+`visualizar_carrinho()` - Displays the items in the shopping cart
 
-`tem_no_carrinho()` - Busca item no carrinho
+`remover_carrinho()` - Removes an item from the shopping cart
 
-`fechar_pedido()` - Exibe valor total da compra e finaliza pedido, limpando o carrinho
+`tem_no_carrinho()` - Searches for an item in the shopping cart
 
-## ⌨️ Como utilizar
+`fechar_pedido()` - Displays the total purchase amount and completes the order, clearing the cart
 
-Aqui vão algumas instruções de como utilizar o sistema:
+## ⌨️ How to Use
 
-### Compilação e execução
+Here are some instructions on how to use the system:
 
-Para compilar e executar o arquivo `mercado.c`, é necessário ter o GCC instalado e configurado como variável de ambiente em seu computador.
+### Compilation and Execution
 
-Com isso feito, basta ter um terminal aberto na pasta onde o arquivo `mercado.c` se encontra e inserir os seguintes comandos no terminal:
+To compile and run the `mercado.c` file, you need to have GCC installed and set as an environment variable on your computer.
+
+Once that is done, open a terminal in the folder where the `mercado.c` file is located and enter the following commands:
 
 ```
 $ gcc mercado.c -o mercado
 $ ./mercado
 ```
-Esses comandos irão compilar e executar o programa, respectivamente.
+These commands will compile and run the program, respectively.
 
-### Utilização
+### Usage
 
-Ao executar o programa, o seguinte texto irá aparecer no seu terminal: 
+When you run the program, the following text will appear in your terminal:
 
 ```
-  - MERCADO HYRULE -  
+  - HYRULE MARKET -  
 
--> Seja bem-vindo(a) ao sistema de compras do mercado Hyrule! Aqui voce possui tres principais funcionalidades: 
-a lista de produtos cadastrados, a lista de desejos e o carrinho de compras. Veja as acoes que voce pode operar no sistema:
+-> Welcome to the Hyrule Market shopping system! Here you have three main features:  
+the list of registered products, the wishlist, and the shopping cart. See the actions you can perform in the system:  
 
-- Lista de Produtos Cadastrados
-1 - Cadastrar um produto
-2 - Visualizar a lista de produtos cadastrados
-3 - Buscar um produto por codigo e exibir suas informacoes
-4 - Remover produto da lista de produtos cadastrados
+- Registered Product List  
+1 - Register a product  
+2 - View the list of registered products  
+3 - Search for a product by code and display its information  
+4 - Remove a product from the registered product list  
 
-- Lista de Desejos
-5 - Adicionar um produto a sua lista de desejos
-6 - Visualizar sua lista de desejos
-7 - Buscar um produto por codigo na sua lista de desejos e exibir suas informacoes
-8 - Remover produto da lista de desejos
+- Wishlist  
+5 - Add a product to your wishlist  
+6 - View your wishlist  
+7 - Search for a product by code in your wishlist and display its information  
+8 - Remove a product from the wishlist  
 
-- Carrinho de Compras
-9 - Adicionar um produto ao carrinho
-10 - Visualizar o carrinho
-11 - Buscar um produto por codigo no carrinho e exibir suas informacoes
-12 - Remover produto do carrinho
-13 - Fechar o pedido e finalizar sua compra
+- Shopping Cart  
+9 - Add a product to the cart  
+10 - View the cart  
+11 - Search for a product by code in the cart and display its information  
+12 - Remove a product from the cart  
+13 - Complete the order and finalize your purchase  
 
-14 - Finalizar sistema
+14 - Exit the system  
 
--> Digite o numero da acao que deseja fazer:
+-> Enter the number of the action you want to perform:
 ```
 
-Para utilizar o programa, basta digitar o número que corresponde à ação que deseja efetuar no sistema de mercado e pressionar Enter.
-Após ter inserido sua opção, aparecerão instruções relativas à ação que escolheu. 
+To use the program, simply type the number corresponding to the action you want to perform in the market system and press Enter.
+After entering your option, instructions related to the chosen action will appear.
 
-Essa mesma prompt aparecerá na tela toda vez que você finalizar uma ação, a não ser que digite a opção 14, que irá encerrar o programa.
+This prompt will appean on the screen every time an action is finished, except if you type the option 14, which will close the program.
